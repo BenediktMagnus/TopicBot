@@ -1,0 +1,8 @@
+{
+    "command": "!topic ",
+    "topicMaxLength": 30,
+    "topicPrefix": "<",
+    "topicSuffix": ">",
+    "commandTimeout": 15000,
+    "intervallTime": "60000"
+}
