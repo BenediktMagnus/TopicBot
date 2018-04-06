@@ -1,0 +1,11 @@
+{
+    "name": "TopicBot",
+    "version": "0.1.0",
+    "description": "A bot to give a voice channel a topic.",
+    "main": "TopicBot.js",
+    "author": "Benedikt Magnus",
+    "dependencies": {
+        "discord.js": "",
+        "ffmpeg-binaries": ""
+    }
+}
