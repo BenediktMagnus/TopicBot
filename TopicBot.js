@@ -27,27 +27,28 @@ bots.forEach(function (bot)
           if (topic.length > config.topicMaxLength)
             topic = topic.substr(0, config.topicMaxLength);
         
-          message.guild.members.get(client.user.id).setNickname(config.topicPrefix + topic + config.topicSuffix);
+          var clientMember = message.guild.members.get(client.user.id);
+          clientMember.setNickname(config.topicPrefix + topic + config.topicSuffix);
 
-          var CheckEmptyChannel;
+          var checkEmptyChannel;
           message.member.voiceChannel.join()
             .then(function (connection)
               {
                 //Disconnect when there is only the bot left in the channel:
-                clearInterval(CheckEmptyChannel);
-                CheckEmptyChannel = client.setInterval(function ()
+                clearInterval(checkEmptyChannel);
+                checkEmptyChannel = client.setInterval(function ()
                   {
                     try
                     {
                       if (connection.channel.members.size <= 1)
                       {
+                        clientMember.setNickname(config.botName);
                         connection.disconnect();
-                        clearInterval(CheckEmptyChannel);
                       }
                     }
-                    catch (e) //Probably broken connection, so already disconnected.
+                    finally
                     {
-                      clearInterval(CheckEmptyChannel);
+                      clearInterval(checkEmptyChannel);
                     }
                   }, config.intervallTime
                 );
