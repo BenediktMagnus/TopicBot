@@ -53,7 +53,7 @@ bots.forEach(function (bot)
                   }, config.intervallTime
                 );
               }
-          );
+          ).catch(function () {});
         }
       }
     );
